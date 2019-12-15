@@ -7,7 +7,7 @@ class Header extends React.Component {
 
             <header className="header">
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="#">
                         <img src={logo} width="190" height="70" alt="" />
                     </a>
 
