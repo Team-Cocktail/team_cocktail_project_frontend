@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './images/tippl_no_backbround_logo.png';
+import logo from 'temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 /*import logo from './logo.svg';*/
