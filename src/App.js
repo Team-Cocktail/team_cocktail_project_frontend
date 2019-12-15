@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './images/temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import moment from 'moment';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 
 
@@ -30,10 +30,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          what we need to put here
+          
         </a>
       </header>
-      <Footer />
+  
     </div>
   );
 }
