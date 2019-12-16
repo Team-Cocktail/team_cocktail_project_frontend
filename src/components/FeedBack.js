@@ -10,15 +10,20 @@ class FeedBack extends React.Component {
       feedBack: this.state.feedBackDescription,
       completed: false
     }
-    this.props.newTask(feedBack);
+    this.props.newFeedBack(feedBack);
     this.setState({ feedBackDescription: "" });
   }
   feedBackDescriptionChanged = (event) => {
     let feedBackDescription = this.state.feedBackDescription;
     feedBackDescription = event.target.value;
     this.setState({ feedBackDescription });
-
-  }
+}
+handleClick = () => {
+  this.props.addFeedBackFunc(this.state.newFeedBackDescription);
+  this.setState({
+      newFeedBackDescription: ""
+  })
+}
   render() {
     return (
       <div className="row">
@@ -34,7 +39,7 @@ class FeedBack extends React.Component {
         </div>
         <div className="col-12 col-md-4">
           <button type="button" className="btn btn-success" onClick={this.addFeedBack}>
-            Feedback
+            FeedBack
          </button>
         </div>
       </div>
