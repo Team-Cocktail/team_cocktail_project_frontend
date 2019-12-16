@@ -5,12 +5,12 @@ class FeedBack extends React.Component {
     feedBack: ""
   }
   addFeedBack = () => {
-    const task = {
+    const feedBack = {
       id: uuidv4(),
       feedBack: this.state.feedBack,
       completed: false
     }
-    this.props.newTask(task);
+    this.props.newTask(feedBack);
     this.setState({ feedBack: "" });
   }
   feedBackChanged = (event) => {
@@ -42,4 +42,3 @@ class FeedBack extends React.Component {
   }
 }
 export default FeedBack;
-

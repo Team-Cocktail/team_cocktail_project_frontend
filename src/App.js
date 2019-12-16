@@ -12,8 +12,21 @@ import moment from 'moment';
 
 /*import logo from './logo.svg';*/
 import './App.css';
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      feedBacks: []
+    }
+  }
+  addFeedBackToList = (feedBack) => {
+    let feedBacks = this.state.feedBacks;
 
-function App() {
+    feedBacks.push(FeedBack);
+    this.setState({ feedBacks: feedBacks });
+  }
+  render() { 
+  
   return (
     <div className="App">
     <h6 className="fas fa-calendar-alt">
@@ -37,10 +50,12 @@ function App() {
         </a>
        
       </header>
-      <FeedBack />
+      <FeedBack newFeedBack={this.addFeedBackToList}/>
      </div> 
      
+     
   );
+}
 }
 
 export default App;
