@@ -1,10 +1,12 @@
 import React from 'react';
+// import App from 'App';
 import logo from './images/temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import moment from 'moment';
 // import Footer from './components/Footer';
+//  import Greet from './components/Greet';
 
-
+ import FeedBack from './components/FeedBack';
 
 
 
@@ -21,10 +23,11 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
         <i className="fas fa-leaf"></i>
-          .PROJECT COCKTAIL.
+          .Greeting.
           <i className="fas fa-leaf"></i>
           </p>
         <a
+        
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
@@ -32,9 +35,11 @@ function App() {
         >
           
         </a>
+       
       </header>
-  
-    </div>
+      <FeedBack />
+     </div> 
+     
   );
 }
 
