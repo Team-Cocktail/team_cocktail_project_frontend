@@ -21,7 +21,6 @@ class App extends React.Component {
   }
   addFeedBackToList = (feedBack) => {
     let feedBacks = this.state.feedBacks;
-
     feedBacks.push(FeedBack);
     this.setState({ feedBacks: feedBacks });
   }

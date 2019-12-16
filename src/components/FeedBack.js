@@ -2,21 +2,21 @@ import React from "react";
 const uuidv4 = require('uuid/v4')
 class FeedBack extends React.Component {
   state = {
-    feedBack: ""
+    feedBackDescription: ""
   }
   addFeedBack = () => {
     const feedBack = {
       id: uuidv4(),
-      feedBack: this.state.feedBack,
+      feedBack: this.state.feedBackDescription,
       completed: false
     }
     this.props.newTask(feedBack);
-    this.setState({ feedBack: "" });
+    this.setState({ feedBackDescription: "" });
   }
-  feedBackChanged = (event) => {
-    let feedBack = this.state.feedBack;
-    feedBack = event.target.value;
-    this.setState({ feedBack });
+  feedBackDescriptionChanged = (event) => {
+    let feedBackDescription = this.state.feedBackDescription;
+    feedBackDescription = event.target.value;
+    this.setState({ feedBackDescription });
 
   }
   render() {
@@ -28,8 +28,8 @@ class FeedBack extends React.Component {
             type="text"
             id="addFeedBack"
             placeholder="Please leave the feedback..."
-            value={this.state.feedBack}
-            onChange={this.feedBackChanged}
+            value={this.state.feedBackDescription}
+            onChange={this.feedBackDescriptionChanged}
           />
         </div>
         <div className="col-12 col-md-4">
