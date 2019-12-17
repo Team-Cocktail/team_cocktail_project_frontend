@@ -4,33 +4,24 @@ import logo from './images/temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import moment from 'moment';
 // import Footer from './components/Footer';
-//  import Greet from './components/Greet';
+  //import Greet from './components/Greet';
 
- import FeedBack from './components/FeedBack';
+ 
 
 
 
 /*import logo from './logo.svg';*/
 import './App.css';
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      feedBacks: []
-    }
-  }
-  addFeedBackToList = (feedBack) => {
-    let feedBacks = this.state.feedBacks;
-    feedBacks.push(FeedBack);
-    this.setState({ feedBacks: feedBacks });
-  }
-  render() { 
+
+  function App(){
+
+  
   
   return (
     <div className="App">
-    <h6 className="fas fa-calendar-alt">
+  
     ({moment().format("dddd Do MMMM")})
-</h6>
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -49,12 +40,12 @@ class App extends React.Component {
         </a>
        
       </header>
-      <FeedBack newFeedBack={this.addFeedBackToList}/>
+      
      </div> 
      
      
   );
-}
-}
+  }
+
 
 export default App;
