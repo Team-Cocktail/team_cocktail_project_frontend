@@ -3,49 +3,84 @@ import React from 'react';
 import logo from './images/temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import moment from 'moment';
+import CocktailByName from './components/CocktailByName';
 // import Footer from './components/Footer';
-  //import Greet from './components/Greet';
-
- 
-
-
-
+//import Greet from './components/Greet';
 /*import logo from './logo.svg';*/
 import './App.css';
 
-  function App(){
 
-  
-  
-  return (
-    <div className="App">
-  
-    ({moment().format("dddd Do MMMM")})
+const axios = require('axios');
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        <i className="fas fa-leaf"></i>
-          .Greeting.
-          <i className="fas fa-leaf"></i>
-          </p>
-        <a
-        
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          
-        </a>
-       
-      </header>
-      
-     </div> 
-     
-     
-  );
+class App extends React.Component {
+  state={
+    cocktailDetails: []
+  }
+
+  cocktailByName = (cocktailName) => {
+    console.log("hello")
+    axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
+      .then((response) => {
+        // handle success
+        console.log(response.data);
+        this.setState({
+          // tasks: response.data.tasks
+          cocktailDetails: response.data.cocktails
+        }, () => {
+          console.log("Cocktail Details  ", this.state.cocktailDetails[0].recipe);
+        })
+
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
   }
 
 
+  render() {
+
+    // const items =[];
+
+
+    return (
+      <div className="App">
+
+
+        <CocktailByName getCocktailFunc={this.cocktailByName} />
+
+   
+        {this.state.cocktailDetails.map(item => {
+          return <p>{item.recipe}</p>
+        })}
+
+
+        ({moment().format("dddd Do MMMM")})
+    
+      <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            <i className="fas fa-leaf"></i>
+            .Greeting.
+          <i className="fas fa-leaf"></i>
+          </p>
+          <a
+
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+          </a>
+
+        </header>
+
+      </div>
+
+
+    );
+  }
+
+}
 export default App;
