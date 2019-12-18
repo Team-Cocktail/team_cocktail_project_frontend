@@ -3,7 +3,7 @@ import React from 'react';
 import logo from './images/temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import moment from 'moment';
-import CocktailByName from './components/CocktailByName';
+import SearchCocktailByName from './components/SearchCocktailByName';
 // import Footer from './components/Footer';
 //import Greet from './components/Greet';
 /*import logo from './logo.svg';*/
@@ -17,7 +17,7 @@ class App extends React.Component {
     cocktailDetails: []
   }
 
-  cocktailByName = (cocktailName) => {
+  searchCocktailByName = (cocktailName) => {
     console.log("hello")
     axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
       .then((response) => {
@@ -47,13 +47,7 @@ class App extends React.Component {
       <div className="App">
 
 
-        <CocktailByName getCocktailFunc={this.cocktailByName} />
-
-   
-        {this.state.cocktailDetails.map(item => {
-          return <p>{item.recipe}</p>
-        })}
-
+       
 
         ({moment().format("dddd Do MMMM")})
     
@@ -73,6 +67,13 @@ class App extends React.Component {
           >
 
           </a>
+          <SearchCocktailByName searchCocktailFunc={this.searchCocktailByName} />
+
+   
+          {this.state.cocktailDetails.map(item => {
+            return <p>{item.recipe}</p>
+          })}
+  
 
         </header>
 

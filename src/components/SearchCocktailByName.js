@@ -1,7 +1,7 @@
 import React from 'react';
 import { findAllInRenderedTree } from 'react-dom/test-utils';
 
- class CocktailByName extends React.Component {
+ class SearchCocktailByName extends React.Component {
     state = {
         drinkName: ""
 
@@ -13,7 +13,7 @@ import { findAllInRenderedTree } from 'react-dom/test-utils';
           findAllInRenderedTree("Error:must enter cocktail name ");
     
     }
-    this.props.getCocktailFunc(this.state.drinkName.toLowerCase());
+    this.props.searchCocktailFunc(this.state.drinkName.toLowerCase());
       
 }
       
@@ -62,4 +62,4 @@ import { findAllInRenderedTree } from 'react-dom/test-utils';
                 
             
        
-    export default CocktailByName;
+    export default SearchCocktailByName;
