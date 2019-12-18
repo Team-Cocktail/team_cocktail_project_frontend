@@ -3,23 +3,46 @@ import React from 'react';
 import logo from './images/temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import moment from 'moment';
+import CocktailByName from './components/CocktailByName';
 // import Footer from './components/Footer';
   //import Greet from './components/Greet';
-
- 
-
-
-
 /*import logo from './logo.svg';*/
 import './App.css';
 
-  function App(){
 
+const axios = require('axios');
+
+class App extends React.Component {
+  
+cocktailByName=(cocktailName)=>{
+  console.log("hello")
+  axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
+      .then((response) => {
+        // handle success
+        console.log(response.data);
+        this.setState({
+          // tasks: response.data.tasks
+          cocktailDetails: response.data.cocktails
+        }, ()=> {
+          console.log("Cocktail Details  " , this.state.cocktailDetails);
+        })
+        
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+}
+
+
+    render() {
+  
+      // const items =[];
   
   
   return (
     <div className="App">
-  
+    < CocktailByName getCocktailFunc={this.cocktailByName}/> 
     ({moment().format("dddd Do MMMM")})
 
       <header className="App-header">
@@ -38,14 +61,14 @@ import './App.css';
         >
           
         </a>
-       
+        
       </header>
-      
+     
      </div> 
      
      
   );
   }
 
-
+}
 export default App;
