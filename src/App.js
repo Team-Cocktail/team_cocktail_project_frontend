@@ -55,7 +55,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             <i className="fas fa-leaf"></i>
-            .Greeting.
+            .Good afteroon!
           <i className="fas fa-leaf"></i>
           </p>
           <a
