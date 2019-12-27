@@ -17,60 +17,109 @@ const axios = require('axios');
 
 class App extends React.Component {
   state = {
-    cocktailDetails: []
+    cocktailDetails: [],
+    cocktailList: []
   }
-   searchCocktailByName = (cocktailName) => {
-    console.log("hello")
-    axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
+
+  componentDidMount() {
+    //Make async request to get data
+    axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getallcocktails/')
       .then((response) => {
-        
+
         console.log(response.data);
         this.setState({
-      cocktailDetails: response.data.cocktails
+          cocktailList: response.data.cocktails
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  };
+
+
+  searchCocktailByName = (cocktailName) => {
+    axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
+      .then((response) => {
+
+        console.log(response.data);
+        this.setState({
+          cocktailDetails: response.data.cocktails
         }, () => {
           console.log("Cocktail Details  ", this.state.cocktailDetails[0].recipe);
         })
-       })
+      })
       .catch(function (error) {
-     console.log(error);
-    })
+        console.log(error);
+      })
   }
 
-    
-   
+  getAllCocktails = () => {
+    axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getallcocktails/')
+      .then((response) => {
+
+        console.log(response.data);
+        this.setState({
+          cocktailList: response.data.cocktails
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
 
   render() {
+    const alcoholicCocktails = this.state.cocktailList.filter(item => item.alcoholic);
+    const nonAlcoholicCocktails = this.state.cocktailList.filter(item => !item.alcoholic);
+    console.log(alcoholicCocktails);
+    console.log(nonAlcoholicCocktails);
+
     return (
       <div className="App">
-    ({moment().format("dddd Do MMMM")})
+        ({moment().format("dddd Do MMMM")})
 
-<header className="App-header">
-          
-
-
-<img src={logo} className="App-logo" alt="logo" />
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
           <p>
             <i className="fas fa-leaf"></i>
             .Greeting.
-         <i className="fas fa-leaf"></i>
+             <i className="fas fa-leaf"></i>
           </p>
-    <a className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer">
-       </a>
-      <hr/>
-       < DropDown /> 
-       <hr/>
-       <SearchCocktailByName searchCocktailFunc={this.searchCocktailByName} />
-  {this.state.cocktailDetails.map(item => 
-    {return <p>{item.recipe}</p>
- })}
- 
+          <a className="App-link"
+             href="https://reactjs.org"
+             target="_blank"
+             rel="noopener noreferrer">
+          </a>
+          <div className="row paddingbelow">
+          {/* <hr /> */}
+            <SearchCocktailByName searchCocktailFunc={this.searchCocktailByName} />
+            {this.state.cocktailDetails.map(item => {
+              return <p>{item.recipe}</p>
+            })}
+          </div>
+          <div className="row paddingabove">
+             <div className="col-6 col-lg-6"> 
+               <ul>
+                <DropDown
+                  cocktailArray={alcoholicCocktails}
+                  label="Alcoholic"
+                />
+                </ul>
+              </div>
+              <div className="col-6 col-lg-6"> 
+               <ul>
+                <DropDown
+                  cocktailArray={nonAlcoholicCocktails}
+                  label="Non-Alcoholic"
+                />
+                </ul>
+              </div>
+          </div>
 
-</header>
 
-</div>
+        </header>
+
+      </div>
 
 
     );
