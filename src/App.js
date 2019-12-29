@@ -18,7 +18,9 @@ const axios = require('axios');
 class App extends React.Component {
   state = {
     cocktailDetails: [],
-    cocktailList: []
+    cocktailList: [],
+    cocktailRecipe: "",
+    cocktailName: ""
   }
 
   componentDidMount() {
@@ -44,8 +46,6 @@ class App extends React.Component {
         console.log(response.data);
         this.setState({
           cocktailDetails: response.data.cocktails
-        }, () => {
-          console.log("Cocktail Details  ", this.state.cocktailDetails[0].recipe);
         })
       })
       .catch(function (error) {
@@ -66,13 +66,23 @@ class App extends React.Component {
         console.log(error);
       })
   }
+  showRecipe = (cocktailName) => {
 
+    let tempRecipe = this.state.cocktailList.map(item => {
+      if (item.name === cocktailName){
+         return item.recipe;
+      };
+    })
+
+    this.setState({
+      cocktailRecipe: tempRecipe,
+      cocktailName: cocktailName
+    })
+  }
 
   render() {
     const alcoholicCocktails = this.state.cocktailList.filter(item => item.alcoholic);
     const nonAlcoholicCocktails = this.state.cocktailList.filter(item => !item.alcoholic);
-    console.log(alcoholicCocktails);
-    console.log(nonAlcoholicCocktails);
 
     return (
       <div className="App">
@@ -90,40 +100,42 @@ class App extends React.Component {
              target="_blank"
              rel="noopener noreferrer">
           </a>
-          <div className="row paddingbelow">
-          {/* <hr /> */}
+        </header>
+
+        <div className="row paddingbelow">
             <SearchCocktailByName searchCocktailFunc={this.searchCocktailByName} />
             {this.state.cocktailDetails.map(item => {
-              return <p>{item.recipe}</p>
+              return <p>Recipe : {item.recipe}</p>
             })}
           </div>
           <div className="row paddingabove">
              <div className="col-6 col-lg-6"> 
                <ul>
-                <DropDown
-                  cocktailArray={alcoholicCocktails}
-                  label="Alcoholic"
-                />
+                  <DropDown
+                    cocktailArray={alcoholicCocktails}
+                    label="Alcoholic"
+                    showRecipeFunc={this.showRecipe}
+                  />
                 </ul>
               </div>
               <div className="col-6 col-lg-6"> 
                <ul>
-                <DropDown
-                  cocktailArray={nonAlcoholicCocktails}
-                  label="Non-Alcoholic"
-                />
+                  <DropDown
+                    cocktailArray={nonAlcoholicCocktails}
+                    label="Non-Alcoholic"
+                    showRecipeFunc={this.showRecipe}
+                  />
                 </ul>
               </div>
           </div>
-
-
-        </header>
-
+          <div className="row paddingabove">
+              <div className="col-12 col-lg-12"> 
+                <p>To make a : {this.state.cocktailName}</p>
+                <p>{this.state.cocktailRecipe}</p>
+              </div>
+          </div>
       </div>
-
-
     );
   }
-
 }
 export default App;
