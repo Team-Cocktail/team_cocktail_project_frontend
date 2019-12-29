@@ -29,7 +29,7 @@ class Dropdown extends React.Component {
 
   this.setState({selectedCocktail: e.target.value });
   // this.showRecipe(this.state.selectedCocktail);
-  this.props.showRecipeFunc(e.target.value);
+  this.props.showRecipeFunc(e.target.value,"");
 }
 
   hideDropdownMenu() {
@@ -65,7 +65,6 @@ class Dropdown extends React.Component {
           <div className="button" onClick={this.showDropdownMenu} > 
                 {this.props.label} </div>
             <select name={this.props.label} id="dropdown" onChange={this.handleDropdownChange}>
-            <option value="Aloholic" selected>Alcoholic</option>
                  {this.props.cocktailArray.map(item => {
                     return <option  key={item.id} value={item.name}> {item.name} </option>
                 })}

@@ -8,6 +8,7 @@ import SearchCocktailByName from './components/SearchCocktailByName';
 //import Greet from './components/Greet';
 /*import logo from './logo.svg';*/
 import './App.css';
+import SearchByDrink from './components/SearchByDrink';
 import DropDown from './components/DropDown';
 // import Footer from './components/Footer';
 
@@ -28,7 +29,6 @@ class App extends React.Component {
     axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getallcocktails/')
       .then((response) => {
 
-        console.log(response.data);
         this.setState({
           cocktailList: response.data.cocktails
         })
@@ -43,7 +43,6 @@ class App extends React.Component {
     axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
       .then((response) => {
 
-        console.log(response.data);
         this.setState({
           cocktailDetails: response.data.cocktails
         })
@@ -51,7 +50,9 @@ class App extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
-  }
+        
+              
+    }
 
   getAllCocktails = () => {
     axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getallcocktails/')
@@ -66,18 +67,26 @@ class App extends React.Component {
         console.log(error);
       })
   }
-  showRecipe = (cocktailName) => {
+  showRecipe = (cocktailName,recipe) => {
+    console.log("IN REcipe");
+    let tempRecipe = "";
 
-    let tempRecipe = this.state.cocktailList.map(item => {
-      if (item.name === cocktailName){
-         return item.recipe;
-      };
-    })
-
+    if (recipe !== "") {
+      tempRecipe =recipe;
+    }
+    else {
+      tempRecipe = this.state.cocktailList.map(item => {
+        if (item.name === cocktailName){
+           return item.recipe;
+        };
+      })
+    }
     this.setState({
       cocktailRecipe: tempRecipe,
       cocktailName: cocktailName
     })
+    recipe = "";
+    console.log(cocktailName);
   }
 
   render() {
@@ -115,6 +124,7 @@ class App extends React.Component {
                     cocktailArray={alcoholicCocktails}
                     label="Alcoholic"
                     showRecipeFunc={this.showRecipe}
+                    key="1"
                   />
                 </ul>
               </div>
@@ -124,6 +134,7 @@ class App extends React.Component {
                     cocktailArray={nonAlcoholicCocktails}
                     label="Non-Alcoholic"
                     showRecipeFunc={this.showRecipe}
+                    key="2"
                   />
                 </ul>
               </div>
@@ -133,6 +144,11 @@ class App extends React.Component {
                 <p>To make a : {this.state.cocktailName}</p>
                 <p>{this.state.cocktailRecipe}</p>
               </div>
+          </div>
+          <div>
+            <h2> What drinks do you have?</h2>
+            <SearchByDrink/>
+
           </div>
       </div>
     );
