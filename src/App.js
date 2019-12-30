@@ -44,7 +44,6 @@ class App extends React.Component {
   searchCocktailByName = (cocktailName) => {
     axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
       .then((response) => {
-
         this.setState({
           cocktailDetails: response.data.cocktails
         })
@@ -52,7 +51,7 @@ class App extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
-              
+  
     }
 
     searchCocktailByDrink = (drink1, drink2, drink3) => {
@@ -129,10 +128,14 @@ class App extends React.Component {
         </header>
 
         <div className="row paddingbelow">
-            <SearchCocktailByName searchCocktailFunc={this.searchCocktailByName} />
+            <SearchCocktailByName 
+                 searchCocktailFunc={this.searchCocktailByName}
+                 showRecipeFunc={this.showRecipe}
+                 key="0" />
             {this.state.cocktailDetails.map(item => {
               return <p>Recipe : {item.recipe}</p>
             })}
+      
           </div>
           <div className="row">
              <div className="col-6 col-lg-6"> 
@@ -170,7 +173,7 @@ class App extends React.Component {
                <ul>
                   <SearchResults
                     cocktailArray={this.state.cocktailByDrink}
-                    label="Cocktails"
+                    label="Click to see Cocktails"
                     showRecipeFunc={this.showRecipe}
                     key="4"
                   />
