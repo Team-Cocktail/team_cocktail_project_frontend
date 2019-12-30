@@ -83,3 +83,6 @@
 .paddingabove{
   padding-top: 20px;
 }
+.row{
+  align-self: center;
+}

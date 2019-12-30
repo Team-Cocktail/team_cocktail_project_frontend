@@ -103,6 +103,7 @@ class App extends React.Component {
                 <DropDown
                   cocktailArray={alcoholicCocktails}
                   label="Alcoholic"
+               
                 />
                 </ul>
               </div>
@@ -111,6 +112,7 @@ class App extends React.Component {
                 <DropDown
                   cocktailArray={nonAlcoholicCocktails}
                   label="Non-Alcoholic"
+                  style={{align:"center"}}
                 />
                 </ul>
               </div>

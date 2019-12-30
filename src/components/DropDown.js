@@ -31,7 +31,7 @@ class Dropdown extends React.Component {
 
   render() {
     return (
-          <div className="dropdown" style={{ background: "pink", color: "green", width: "150px", align: "left" }} >
+          <div className="dropdown" style={{ background: "pink", color: "green", width: "165px",fontSize:"20px",height:"40px",border:"4px solid black",paddingRight:"25px"}} >
             <div className="button" onClick={this.showDropdownMenu}> {this.props.label} </div>
               {this.state.displayMenu ? (
                 this.props.cocktailArray.map(item => {
