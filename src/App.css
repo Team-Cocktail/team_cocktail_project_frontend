@@ -1,6 +1,6 @@
 .App{
   background-color:rgba(97, 8, 97, 0.952);
-  min-height:450px;
+  min-height:650px;
   opacity:0.9;
   width: 500px;
   border-radius: 25px;
@@ -52,7 +52,7 @@
 
 .App-header {
   background-color: #b94496;
-  min-height: 75vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
