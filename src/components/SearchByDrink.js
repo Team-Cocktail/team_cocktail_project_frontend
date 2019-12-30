@@ -27,13 +27,37 @@ class SearchByDrink extends React.Component {
       }
 
       handleClick = () => {
-        
+      
+        let tempDrink1 = "";
+        let tempDrink2 = "";
+        let tempDrink3 = "";
+
+        // Check if values have been entered for the 3 drinks if not assign them the value empty
         if (this.state.newDrink1 === "") {
           alert("ERROR: You must enter at least something in Drink 1");
         }
+        else {
+          tempDrink1 = this.state.newDrink1.toLowerCase();
+        }
+        if (this.state.newDrink2 === "") {
+          tempDrink2 = "empty"
+        }
+        else {
+          tempDrink2 = this.state.newDrink2.toLowerCase();
+        }
+        if (this.state.newDrink3 === "") {
+          tempDrink3 = "empty"
+        }
+        else {
+          tempDrink3 = this.state.newDrink2.toLowerCase();
+        }
+
+        this.props.searchCocktailByDrinkFunc(tempDrink1, tempDrink2, tempDrink3)
 
         this.setState({
-         
+          newDrink1: "",
+          newDrink2: "",
+          newDrink3: "",
         });
       };
 
@@ -41,7 +65,7 @@ class SearchByDrink extends React.Component {
     render() {
         return (
           <section> 
-            <div className="row paddingabove">
+            <div className="row">
                 <div className="col-4 col-lg-4">
                     <p>Drink 1 </p>
                 </div>
@@ -81,13 +105,14 @@ class SearchByDrink extends React.Component {
                         onChange={this.updateDrink3} />
                 </div>
             </div>
-            <div className="row paddingbelow">
-                <div className="col-3 col-lg-3" />
-                <div className="col-9 col-lg-9">
+            <div className="row">
+                <div className="col-4 col-lg-4" />
+                <div className="col-4 col-lg-4">
                     <button className="btn btn-warning"
                         onClick={this.handleClick}>Search
                     </button>
                 </div>
+                <div className="col-4 col-lg-4"/>
             </div>
         </section>
     );

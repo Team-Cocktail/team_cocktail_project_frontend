@@ -10,6 +10,7 @@ import SearchCocktailByName from './components/SearchCocktailByName';
 import './App.css';
 import SearchByDrink from './components/SearchByDrink';
 import DropDown from './components/DropDown';
+import SearchResults from './components/SearchResults';
 // import Footer from './components/Footer';
 
 
@@ -20,6 +21,7 @@ class App extends React.Component {
   state = {
     cocktailDetails: [],
     cocktailList: [],
+    cocktailByDrink: [],
     cocktailRecipe: "",
     cocktailName: ""
   }
@@ -50,9 +52,24 @@ class App extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
-        
               
     }
+
+    searchCocktailByDrink = (drink1, drink2, drink3) => {
+      axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktaildrink/' + drink1 + "/" + drink2 + "/" + drink3)
+        .then((response) => {
+  
+          console.log(response.data.cocktails);
+
+          this.setState({
+            cocktailByDrink: response.data.cocktails
+          })
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+                
+      }
 
   getAllCocktails = () => {
     axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getallcocktails/')
@@ -117,7 +134,7 @@ class App extends React.Component {
               return <p>Recipe : {item.recipe}</p>
             })}
           </div>
-          <div className="row paddingabove">
+          <div className="row">
              <div className="col-6 col-lg-6"> 
                <ul>
                   <DropDown
@@ -139,16 +156,32 @@ class App extends React.Component {
                 </ul>
               </div>
           </div>
+          
+          <div className="row">
+              <div className="col-12 col-lg-12"> 
+                 <h2> What drinks do you have?</h2>
+                 <SearchByDrink
+                    searchCocktailByDrinkFunc={this.searchCocktailByDrink}
+                    key="3"/>
+              </div>
+          </div>
+          <div className="row">
+             <div className="col-6 col-lg-6"> 
+               <ul>
+                  <SearchResults
+                    cocktailArray={this.state.cocktailByDrink}
+                    label="Cocktails"
+                    showRecipeFunc={this.showRecipe}
+                    key="4"
+                  />
+                </ul>
+              </div>
+          </div>
           <div className="row paddingabove">
               <div className="col-12 col-lg-12"> 
                 <p>To make a : {this.state.cocktailName}</p>
                 <p>{this.state.cocktailRecipe}</p>
               </div>
-          </div>
-          <div>
-            <h2> What drinks do you have?</h2>
-            <SearchByDrink/>
-
           </div>
       </div>
     );
