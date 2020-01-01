@@ -117,8 +117,13 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             <i className="fas fa-leaf"></i>
-            .Greeting.
-             <i className="fas fa-leaf"></i>
+// <<<<<<< sp-team-cocktail-frontend
+//             .Good afteroon!
+//           <i className="fas fa-leaf"></i>
+// =======
+//             .Greeting.
+//              <i className="fas fa-leaf"></i>
+// >>>>>>> master
           </p>
           <a className="App-link"
              href="https://reactjs.org"
