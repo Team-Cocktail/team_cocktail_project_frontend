@@ -60,13 +60,11 @@ class App extends React.Component {
           this.showRecipe(item.name, item.recipe);
           found = true;
         }
-
       })
       if (!found) {
         
         alert("ERROR: No cocktail by this name has been found");
       }
-
     }
 
     searchCocktailByDrink = (drink1, drink2, drink3) => {
