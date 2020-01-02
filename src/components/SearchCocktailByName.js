@@ -8,10 +8,13 @@ class SearchCocktailByName extends React.Component {
 
   getCocktail = (event) => {
     if (this.state.drinkName === "") {
-      findAllInRenderedTree("Error:must enter cocktail name ");
+      alert("ERROR: You must enter a cocktail name to search on");
     }
 
     this.props.searchCocktailFunc(this.state.drinkName.toLowerCase());
+    this.setState({
+      drinkName: ""
+    });
 
   }
   updateName = (event) => {
