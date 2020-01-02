@@ -67,17 +67,6 @@ class SearchByDrink extends React.Component {
           <section> 
             <div className="row">
                 <div className="col-4 col-lg-4">
-                    <p>Drink 1 </p>
-                </div>
-                <div className="col-4 col-lg-4">
-                    <p>Drink 2 </p>
-                </div>
-                <div className="col-4 col-lg-4">
-                    <p>Drink 3 </p>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-4 col-lg-4">
                     <input
                         id="drink1Input"
                         type="text"

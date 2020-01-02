@@ -48,7 +48,7 @@ class SearchResults extends React.Component {
           <div>
           <div className="button" onClick={this.showDropdownMenu} > 
                 {this.props.label} </div>
-            <select name={this.props.label} id="dropdown" size="3" onChange={this.handleDropdownChange}>
+            <select name={this.props.label} id="dropdown" size="2" onChange={this.handleDropdownChange}>
                  {this.props.cocktailArray.map(item => {
                     return <option  key={item.id} value={item.name}> {item.name} </option>
                 })}

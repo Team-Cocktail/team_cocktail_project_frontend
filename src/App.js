@@ -42,16 +42,31 @@ class App extends React.Component {
 
 
   searchCocktailByName = (cocktailName) => {
-    axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
-      .then((response) => {
-        this.setState({
-          cocktailDetails: response.data.cocktails
-        })
+    // axios.get('https://ijrb29r28l.execute-api.eu-west-2.amazonaws.com/dev/getcocktailbyname/' + cocktailName)
+    //   .then((response) => {
+
+    //     this.setState({
+    //       cocktailDetails: response.data.cocktails
+    //     })
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+
+      let found = false;
+
+      this.state.cocktailList.map(item =>{
+        if (cocktailName === item.name.toLowerCase()) {
+          this.showRecipe(item.name, item.recipe);
+          found = true;
+        }
+
       })
-      .catch(function (error) {
-        console.log(error);
-      })
-  
+      if (!found) {
+        
+        alert("ERROR: No cocktail by this name has been found");
+      }
+
     }
 
     searchCocktailByDrink = (drink1, drink2, drink3) => {
@@ -83,7 +98,7 @@ class App extends React.Component {
         console.log(error);
       })
   }
-  showRecipe = (cocktailName,recipe) => {
+  showRecipe = (cocktailName, recipe) => {
     console.log("IN REcipe");
     let tempRecipe = "";
 
@@ -127,15 +142,20 @@ class App extends React.Component {
           </a>
         </header>
 
-        <div className="row paddingbelow">
+        <div className="row">
             <SearchCocktailByName 
                  searchCocktailFunc={this.searchCocktailByName}
                  showRecipeFunc={this.showRecipe}
                  key="0" />
-            {this.state.cocktailDetails.map(item => {
+            {/* {this.state.cocktailDetails.map(item => {
               return <p>Recipe : {item.recipe}</p>
-            })}
+            })} */}
       
+          </div>
+          <div className="row">
+            <div className="col-12 col-lg-12"> 
+                <h2> Inspire Me!</h2>
+            </div>
           </div>
           <div className="row">
              <div className="col-6 col-lg-6"> 
