@@ -1,12 +1,15 @@
 .App{
   background-color:rgba(97, 8, 97, 0.952);
-  min-height:650px;
+  color:white;
+  min-height:500px;
   opacity:0.9;
   width: 500px;
   border-radius: 25px;
-  margin: 40px auto;
+  margin: 2px auto;
   text-align: center;
   padding: 20px;
+  margin-top: -25px;
+  margin-bottom: -25px;
   box-shadow:
   /* The top layer shadow */
       
@@ -31,7 +34,7 @@
   font-family: 'Times New Roman', Times, serif;
   font-style:italic ;
   font-stretch: normal; 
-   font-size:18px;
+   font-size:15px;
   
 }
 
@@ -59,7 +62,7 @@
   justify-content: top;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-top: 5px;
+  padding-top: 2px;
   scroll-padding-bottom: 5px;
 }
 
@@ -77,13 +80,9 @@
   }
 } */
 .paddingbelow{
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .paddingabove{
   padding-top: 20px;
-}
-.row{
-  align-self: center;
-  
 }

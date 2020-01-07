@@ -44,38 +44,6 @@ class SearchCocktailByName extends React.Component {
     }
   }
 
-//   render() {
-//     return (
-//       <div className="row">
-//         <div className="col-12 col-md-8">
-//           <input
-//             id="input-group"
-
-//             type="text"
-//             className="form-control form-control-lg"
-//             placeholder="Search Cocktail..." style={{ height: "40px" }}
-//             value={this.state.drinkName}
-//             onChange={this.updateName} />
-//          </div>
-        
-//       <div className="col-4 col-md-12">
-//           <button type="button" style={{height: "40px"}}className="btn btn-success btn btn- sm-2" onClick={this.getCocktail}>
-
-//         </div>
-
-//         <div className="col-12 col-md-4">
-//           <button type="button"
-//             style={{ height: "40px" }}
-//             className="btn btn-success"
-//             onClick={this.getCocktail}>
-
-//             Search
-//          </button>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 
 

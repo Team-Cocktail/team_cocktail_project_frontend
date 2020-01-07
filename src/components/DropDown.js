@@ -40,22 +40,12 @@ class Dropdown extends React.Component {
     });
   }
 
-//   render() {
-//     return (
 
 //           <div className="dropdown" style={{ background: "white", color: "black", 
 //              width: "200px",height:"40px", fontSize:"25px",border:"4px solid black",fontStyle:"cursive"}} >
 //             <div className="button"  onClick={this.showDropdownMenu}> {this.props.label} </div>
 //               {this.state.displayMenu ? (
-//                 this.props.cocktailArray.map(item => {
-//                   return <li>
-//                      <a className="active" style={{fontStyle:"cursive",color:"white"}}href="#A">{item.name}
-//                      </a>
-                 
-//                     </li>
-//                 })
-//               ):
-//               (null)}                
+//                                
 render(){
   return(
 
@@ -63,7 +53,7 @@ render(){
       <div>
         <div>
         
-        
+              
         <div className="button" 
         onClick={this.showDropdownMenu} > 
               {this.props.label} 

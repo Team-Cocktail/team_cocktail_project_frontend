@@ -4,14 +4,14 @@ import logo from './images/temp cocktail logo.png';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import moment from 'moment';
 import SearchCocktailByName from './components/SearchCocktailByName';
-// import Header from './components/Header';
-//import Greet from './components/Greet';
+ import Header from './components/Header';
+import Greet from './components/Greet';
 /*import logo from './logo.svg';*/
 import './App.css';
 import SearchByDrink from './components/SearchByDrink';
 import DropDown from './components/DropDown';
 import SearchResults from './components/SearchResults';
-// import Footer from './components/Footer';
+ import Footer from './components/Footer';
 
 
 const axios = require('axios');
@@ -124,25 +124,16 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        ({moment().format("dddd Do MMMM")})
+  
+      <Greet  />
 
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            <i className="fas fa-leaf"></i>
-      .Good afteroon.
-          <i className="fas fa-leaf"></i>
+      <div className="row" style={{marginTop:"1px",marginBottom:"-35px"}}>
+      <Header />
+</div>
 
-            
-          </p>
-          <a className="App-link"
-             href="https://reactjs.org"
-             target="_blank"
-             rel="noopener noreferrer">
-          </a>
-        </header>
-<hr />
-        <div className="row">
+
+<hr/>
+        <div className="row" style={{marginTop:"1px",marginBottom:"0"}}>
             <SearchCocktailByName 
                  searchCocktailFunc={this.searchCocktailByName}
                  showRecipeFunc={this.showRecipe}
@@ -152,63 +143,70 @@ class App extends React.Component {
           </div>
           <hr />
           <div className="row">
-            <div className="col-12 col-lg-12"> 
-                <h2> Inspire Me</h2>
+            <div className="col-12 col-lg-12" style={{marginTop:"-15px",marginBottom:"-10px"}}> 
+                <h3> Inspire Me</h3>
             </div>
           </div>
           <div className="row">
-             <div className="col-6 col-lg-6"> 
+             <div className="col-6 col-lg-12"> 
                
                 <DropDown
                   cocktailArray={alcoholicCocktails}
-                  label="Alcoholic"style={{width:"160px"}}
-               
+                  label="Alcoholic"style={{width:"120px"}}
+                  showRecipeFunc={this.showRecipe}
+                  key="2"
                 />
                 
               </div>
-              <div className="col-6 col-lg-6"> 
+              <div className="col-6 col-lg-12"> 
                
                 <DropDown
                   cocktailArray={nonAlcoholicCocktails}
                   label="Non-Alcoholic"
-                
+                  style={{width:"120px"}}
+                  showRecipeFunc={this.showRecipe}
+                  key="2"
                 />
             </div>
           </div>
           <hr />
           <div className="row">
-              <div className="col-12 col-lg-12"> 
-                 <h2> What drinks do you have?</h2>
+              <div className="col-12 col-lg-12" style={{marginTop:"-25px"}}> 
+                 <h3> What drinks do you have? </h3>
                  <SearchByDrink
                     searchCocktailByDrinkFunc={this.searchCocktailByDrink}
                     key="3"/>
               </div>
           </div>
-          <hr />
+          
           <div className="row">
-             <div className="col-6 col-lg-6"> 
+             <div className="col-6 col-lg-6" style={{marginTop:"-15px",marginBottom:"-20px"}}> 
              
              <ul>
-                 <h2> <SearchResults
+                 <h3> <SearchResults
                     cocktailArray={this.state.cocktailByDrink}
             label="Click to see Cocktails"
                     showRecipeFunc={this.showRecipe}
                     key="4"
                   />
-                </h2>
+                </h3>
                   </ul>
                 
               </div>
           </div>
           
           <hr />
-          <div className="row">
-              <div className="col-12 col-lg-12"> 
-                <p>To make a : {this.state.cocktailName}</p>
+          <div className="row" style={{marginBottom:"40px"}} >
+              <div className="col-12 col-lg-12" style={{marginBottom:"px",marginTop:"-20px"}}> 
+                <h2>To make a: {this.state.cocktailName}</h2>
                 <p>{this.state.cocktailRecipe}</p>
+                <hr />
+               <div className="row">
+                <Footer />
               </div>
           </div>
       </div>
+     </div>
     );
   }
 }

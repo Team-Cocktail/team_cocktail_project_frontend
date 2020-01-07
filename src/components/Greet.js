@@ -1,9 +1,9 @@
 import React from "react";
-// import logo from '../images/tasq_logo_6.png';
-
-
+import logo from '../images/tippl_300_x_300.png';
+import moment from 'moment';
 
 function Greet() {
+
     const date = new Date()
     const hours = date.getHours()
     let timeOfDay
@@ -21,15 +21,17 @@ function Greet() {
         color: "#FFF",
         // backgroundColor: "#E96969",
         textAlign: "center",
-        width: 350,
-        padding: 60,
-        borderRadius: 20,
+        width: 250,
+        height:50,
+        padding: 10,
+        borderRadius: 10,
         fontFamily: "Montserrat",
         fontcolor: "white",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexFlow: "row wrap",
+        flex:1,
         // display: [
         // '-webkit-box',
         // '-webkit-flex',
@@ -41,20 +43,17 @@ function Greet() {
     }
 
     return (
-       
-        <div className="row ToDoRow top-buffer d-flex justify-content-center">
-        <div className="col-12 col-md-12 col-lg-12">
-        <button type="button" className="btn btn-success btn btn-sm m-1" >
-            Done
-</button>
-    </div>    
         
-        
-        
-        <a className="funkybutton">
- <h3 style={styles} >Good {timeOfDay}!</h3>
- </a>
+        <div className="row ToDoRow top-buffer d-flex justify-content-center" style={{marginTop:"2px"}} >
+            <a className="funkybutton">
+
+<h4 style={styles} ><i className="fas fa-leaf"></i>..Good {timeOfDay}..
+    <i className="fas fa-leaf"></i>
+                ..({moment().format("dddd Do MMMM")})..
+           </h4>   
+              </a>  
         </div>
+    
 
     )
 }
