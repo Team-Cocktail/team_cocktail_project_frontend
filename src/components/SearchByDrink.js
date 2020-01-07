@@ -96,15 +96,14 @@ class SearchByDrink extends React.Component {
             </div>
             
             
-            <div className="row" >
-                <div className="col-4 col-lg-4" />
-                <div className="col-4 col-lg-4">
+                <div className="col-12 col-lg-6" />
+                <div className="col-12 col-lg-6">
                     <button className="btn btn-success"
                         onClick={this.handleClick}>Search
                     </button>
                 </div>
                 <div className="col-4 col-lg-4"/>
-            </div>
+            
         </section>
     );
     };
